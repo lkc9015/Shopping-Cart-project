@@ -21,10 +21,6 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ]
 
-products_ids = [1,8,6,16,6]
+product_id = input("Please input a valid product identifier:")
 
-def product_name(product):
-    retrun [product for product in product if product["id"] == ]
-
-for product in products:
-    print (pr
+print("THE PRODUCT IDENTIFIER IS:" + str(product_id))
