@@ -21,6 +21,16 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ]
 
-product_id = input("Please input a valid product identifier:")
+product_ids = []
 
-print("THE PRODUCT IDENTIFIER IS:" + str(product_id))
+while True:
+    product_id = input("Please input a valid product identifier:") # withouth if statement, infinite loop
+    if product_id == "DONE":
+        print ("Thank you all done here")
+        break # break out of the loop
+    else:
+    print("THE PRODUCT IDENTIFIER IS:" + str(product_id))
+    product_ids.append(product_id)
+
+print(product_ids)
+# as long as the condition is met, return ~
