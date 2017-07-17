@@ -69,7 +69,7 @@ sales_tax = 0.08875 * subtotal
 print ("Plus NYC Sales Tax (8.875%): " + '${0:.2f}'.format(sales_tax))
 
 total_price = subtotal + sales_tax
-print("Total: " + '{0:.2f}'.format(total_price))
+print("Total: " + '${0:.2f}'.format(total_price))
 
 print ("-" * 30)
 print ("Thank you for your business! Please come again.")
