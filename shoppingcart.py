@@ -1,3 +1,5 @@
+import datetime
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -23,14 +25,51 @@ products = [
 
 product_ids = []
 
+## check point 1
 while True:
-    product_id = input("Please input a valid product identifier:") # withouth if statement, infinite loop
+    product_id = input("Please input a valid product identifier, or 'DONE' if there are no more items:") # withouth if statement, infinite loop
     if product_id == "DONE":
-        print ("Thank you all done here")
         break # break out of the loop
+    elif int(product_id) >= 21:
+        print ("Hey, are you sure that product identifier is correct? Please try again!")
     else:
-    print("THE PRODUCT IDENTIFIER IS:" + str(product_id))
-    product_ids.append(product_id)
+        product_ids.append(int(product_id))
 
-print(product_ids)
-# as long as the condition is met, return ~
+## The beginning of the receipt
+print ("-" * 30)
+print ("Lee's mart")
+print ("-" * 30)
+print ("Web: www.leemart.com")
+print ("Phone: 1-917-498-1036")
+now = datetime.datetime.now()
+checkout_time = now.strftime("%Y-%m-%d %H:%M:%S")
+print ("Checkout Time:" + " " + checkout_time)
+print ("-" * 30)
+
+## Printing items
+print ("Shopping Cart Items:")
+
+def lookup_product_by_id(product_id):
+     matching_products = [product for product in products if product["id"] == product_id]
+     return matching_products[0]
+
+subtotal = 0
+
+for product_id in product_ids:
+    product = lookup_product_by_id(product_id)
+    subtotal += product["price"]
+    price_usd = ' (${0:.2f})'.format(product["price"])
+    print(" + " + product["name"] + price_usd)
+
+## The end of the receipt
+print ("-" * 30)
+print ("Subtotal: " + '${0:.2f}'.format(subtotal))
+
+sales_tax = 0.08875 * subtotal
+print ("Plus NYC Sales Tax (8.875%): " + '${0:.2f}'.format(sales_tax))
+
+total_price = subtotal + sales_tax
+print("Total: " + '{0:.2f}'.format(total_price))
+
+print ("-" * 30)
+print ("Thank you for your business! Please come again.")
